@@ -22,9 +22,11 @@ async function startBot() {
     const { connection, lastDisconnect, qr } = update;
 
     if (qr) {
-      console.log("📷 Novo QR code gerado:");
-      qrcode.generate(qr, { small: true });
+      // Em cloud, não dá pra gerar QR no terminal, então só imprime como string
+      console.log("📷 Novo QR code (copie e escaneie pelo WhatsApp):");
+      console.log(qr);
     }
+
     if (connection === "open") {
       console.log("✅ Bot conectado ao WhatsApp!");
     } else if (connection === "close") {
